@@ -1,6 +1,7 @@
 # _*_ coding: utf-8 _*_
 from __future__ import division  #  整数除法（非地板除）必须在文件的开头
 import types
+import  json
 
 
 #类型
@@ -25,8 +26,8 @@ import types
     # 字典 哈希 {key:value,key:value}  dict()
     # 序列化对象  import  pickle.dump(obj,file[,protocol])  load(file)
     #print  json.dumps(fdict,ensure_ascii=False,encoding='utf-8') 打印字典中文
-    
-import  json
+
+
 fdict=dict((['孙明','帅'],['吴中秋','贱']))
 #print  json.dumps(fdict,ensure_ascii=False,encoding='utf-8')
 
