@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 from __future__ import division  #  整数除法（非地板除）必须在文件的开头
 import types
-import  json
+import json
 
 
 #类型
@@ -29,9 +29,12 @@ import  json
     # 字典比较大小cmp(), 解释器顺序  字典长度->键 -> 值
     # hash() 判断是否能成为字典的键key
     # *性能* ：直接迭代序列要比索引迭代快
-    # 列表解析，动态创建一个列表  语法： [expr for iter_var in iterable if cond_expr]
-    
+    # 列表解析表达式->动态创建一个列表  语法： [expr for iter_var in iterable if cond_expr]
+    # 生成器表达式->生成器是特定的函数, 允许你返回一个值  语法： (expr for iter_var in iterable if cond_expr)
+    # *性能* ：生成器性能优于列表解析表达式
 
 print  range(8)
 print  [(x**2)  for  x  in range(8)  if (x**2)!=4 and  x!=4]
+
+
 
