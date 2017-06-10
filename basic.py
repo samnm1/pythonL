@@ -25,12 +25,13 @@ import  json
     # 浅拷贝是对象类型一样，内容是引用（list,dict,copy）, 深拷贝需要使用  import copy.deepcopy函数
     # 字典 哈希 {key:value,key:value}  dict()
     # 序列化对象  import  pickle.dump(obj,file[,protocol])  load(file)
-    #print  json.dumps(fdict,ensure_ascii=False,encoding='utf-8') 打印字典中文
+    # print  json.dumps(fdict,ensure_ascii=False,encoding='utf-8') 打印字典中文
+    # 字典比较大小cmp(), 解释器顺序  字典长度->键 -> 值
+    # hash() 判断是否能成为字典的键key
+    # *性能* ：直接迭代序列要比索引迭代快
+    # 列表解析，动态创建一个列表  语法： [expr for iter_var in iterable if cond_expr]
+    
 
-
-fdict=dict((['孙明','帅'],['吴中秋','贱']))
-#print  json.dumps(fdict,ensure_ascii=False,encoding='utf-8')
-
-for key  in fdict:
-    print key , fdict[key]
+print  range(8)
+print  [(x**2)  for  x  in range(8)  if (x**2)!=4 and  x!=4]
 
