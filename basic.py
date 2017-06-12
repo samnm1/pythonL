@@ -51,7 +51,8 @@ import  sys, shelve
     #内建所有错误Exception , 所有错误 BaseException
     #except 参数，except (Exception1, Exception2, ..., ExceptionN)[, reason]:
     #上下文管理 with context_expression [as target(s)]:
-    #
+    #上下文管理修饰 contextlib 模块 | from contextlib import contextmanager  |  @contextmanager
+    # sys.exc_info() 获取异常信息的途径
 
 
 class Sample:
