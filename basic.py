@@ -46,24 +46,35 @@ import  sys, shelve
     # shelve提供对象序列化及存储转化， 步骤：shelve -> anydbm ->cpickle
     # assert断言，测试表达式 
 
+#异常
+    #语法：try-except-else-finally:
+    #内建所有错误Exception , 所有错误 BaseException
+    #except 参数，except (Exception1, Exception2, ..., ExceptionN)[, reason]:
+    #上下文管理 with context_expression [as target(s)]:
+    #
 
-dbm_shelve=shelve.open('samnm.pe',flag='c',protocol=2,writeback=False)
-assert  isinstance(dbm_shelve,shelve.Shelf)
 
-#nameDict=dict((['name','samnm'],['sex','man']))
+class Sample:
+    def __enter__(self):
+        return self
+    def __exit__(self,type,value,trace):
+        print 'type:',type
+        print 'value:',value
+        print 'trace:',trace
+    def do_something(self):
+        bar=1/1
+        return bar+10
+with Sample() as sample:
+    sample.do_something()
 
-nameDict={'name':'samnm', 'sex':'男'}
 
-dbm_shelve['person']=nameDict
-dbm_shelve.sync()
 
-print nameDict,dbm_shelve['person']
 
-dbm_shelve.close()
+try:
+    float('12323%abc')
+except :
+    import sys
+    print  sys.exc_info()
 
-d=shelve.open('samnm.pe')
+print '继续...........'
 
-d.clear()
-print  d.items
-
-d.close()
