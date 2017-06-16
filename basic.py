@@ -6,6 +6,9 @@ from collections   import  Iterable
 import os
 import  sys, shelve
 
+from operator import add, sub
+from random import randint, choice
+
 
 #基础类型
     #所有的Python 对象都拥有三个特性：身份，类型和值。
@@ -56,48 +59,31 @@ import  sys, shelve
 
 #函数
 
+    #函数返回值  None ,  Object  ,  Tuple
+    #参数组：func(*tuple_grp_nonkw_args 元组参数, **dict_grp_kw_args 字典参数)
+    #完整公式：func(positional_args, keyword_args,*tuple_grp_nonkw_args, **dict_grp_kw_args)
+    #匿名函数：lambda为减少代码行
+
+def  striii(*st):
+
+     return  st
+
+striii.__doc__='演示函数'
+
+help(striii)
+
+v=lambda x,y:x+y
+
+print v(1,3)
 
 
 
-from operator import add, sub
-from random import randint, choice
-
-ops = {'+': add, '-': sub}
-MAXTRIES = 2
-
-def doprob():
-    op = choice('+-')
-    nums = [randint(1,10) for i in range(2)]
-    nums.sort(reverse=True)
-    ans = ops[op](*nums)
-    pr = '%d %s %d = ' % (nums[0], op, nums[1])
-    oops = 0
-    while True:
-        try:
-            if int(raw_input(pr)) == ans:
-                print 'correct'
-            break
-            if oops == MAXTRIES:
-                print 'answer\n%s%d'%(pr, ans)
-            else:
-                print 'incorrect... try again'
-                oops += 1
 
 
 
-        except (KeyboardInterrupt, \
-                EOFError, ValueError):
-                print 'invalid input... try again'
 
-def main():
-    while True:
-        doprob()
-        try:
-            opt = raw_input('Again? [y]').lower()
-            if opt and opt[0] == 'n':
-                break
-        except (KeyboardInterrupt, EOFError):
-                break
+     
 
-if __name__ == '__main__':
-    main()
+
+
+
