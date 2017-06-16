@@ -54,28 +54,50 @@ import  sys, shelve
     #上下文管理修饰 contextlib 模块 | from contextlib import contextmanager  |  @contextmanager
     # sys.exc_info() 获取异常信息的途径
 
-
-class Sample:
-    def __enter__(self):
-        return self
-    def __exit__(self,type,value,trace):
-        print 'type:',type
-        print 'value:',value
-        print 'trace:',trace
-    def do_something(self):
-        bar=1/1
-        return bar+10
-with Sample() as sample:
-    sample.do_something()
+#函数
 
 
 
 
-try:
-    float('12323%abc')
-except :
-    import sys
-    print  sys.exc_info()
+from operator import add, sub
+from random import randint, choice
 
-print '继续...........'
+ops = {'+': add, '-': sub}
+MAXTRIES = 2
 
+def doprob():
+    op = choice('+-')
+    nums = [randint(1,10) for i in range(2)]
+    nums.sort(reverse=True)
+    ans = ops[op](*nums)
+    pr = '%d %s %d = ' % (nums[0], op, nums[1])
+    oops = 0
+    while True:
+        try:
+            if int(raw_input(pr)) == ans:
+                print 'correct'
+            break
+            if oops == MAXTRIES:
+                print 'answer\n%s%d'%(pr, ans)
+            else:
+                print 'incorrect... try again'
+                oops += 1
+
+
+
+        except (KeyboardInterrupt, \
+                EOFError, ValueError):
+                print 'invalid input... try again'
+
+def main():
+    while True:
+        doprob()
+        try:
+            opt = raw_input('Again? [y]').lower()
+            if opt and opt[0] == 'n':
+                break
+        except (KeyboardInterrupt, EOFError):
+                break
+
+if __name__ == '__main__':
+    main()
