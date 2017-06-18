@@ -62,19 +62,52 @@ from random import randint, choice
     #函数返回值  None ,  Object  ,  Tuple
     #参数组：func(*tuple_grp_nonkw_args 元组参数, **dict_grp_kw_args 字典参数)
     #完整公式：func(positional_args, keyword_args,*tuple_grp_nonkw_args, **dict_grp_kw_args)
-    #匿名函数：lambda为减少代码行
+    #匿名函数：lambda为减少代码行 lambda [arg1[, arg2, ... argN]]: expression 在调用时绕过函数的栈分配
+    #非关键字可变参数（元组）必须在位置和默认参数之后
+    #全局变量想作用于函数内，需加 global
+    #生成器 函数内 yield语句，暂停中间返回   next()下一步执行， 迭代属性
+    #加强版生成器  next(), send(), close() 双向通讯  ： PEP 的255 和342 中
+    
 
-def  striii(*st):
 
-     return  st
+def  foo(host,port,*argers):
 
-striii.__doc__='演示函数'
+     #return  host, port, arg1 for eacharg in  argers
+    print 'host:', host
+    print 'port', port
 
-help(striii)
+    print  'tuple:',[float(eacharg1) for  eacharg1  in  argers]
 
-v=lambda x,y:x+y
 
-print v(1,3)
+def map(func, seq):
+    mapped_seq = []
+    for eachItem in seq:
+        mapped_seq.append(func(eachItem))
+    return mapped_seq
+
+#闭包
+def counter(start_at=0): 
+    count = [start_at] 
+    def incr(): 
+        count[0] += 1
+        return int(count[0])
+    return incr
+#foo('127',80,'123',456)
+
+if  __name__ == '__main__':
+    
+    print   map((lambda arg: arg+1-10),[1,2,3,4,5,6,7])
+
+    count = counter(1)
+    print  count()
+
+
+
+
+
+
+
+
 
 
 
