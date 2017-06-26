@@ -67,40 +67,81 @@ from random import randint, choice
     #全局变量想作用于函数内，需加 global
     #生成器 函数内 yield语句，暂停中间返回   next()下一步执行， 迭代属性
     #加强版生成器  next(), send(), close() 双向通讯  ： PEP 的255 和342 中
+
+
+#模块
+
+    #语法：import  module,  from  module  import  names  as  别名   PEP 221  
+    #规范：标准库，第三方库，自定义库  PEP 8  python 风格
+
+#类
+    #__init__()类似于类构造器，初始化调用一个实例
+    #__dict__属性包含一个字典,dir(),  类函数 派生类->基类 '深度优先搜索'
+    #__new__() 在_init_()之前，构造一个实例，主要用于不可变类str、int 、tuple 自定义这些类的实例化过程途径
+    #类属性与实例属性的名字空间不同 ,  Class._dict_() instance._dict_()
+    #类属性为类似静态属性，new（）实例进类属性_dict_属性字典内
+    #实例属性调用初始化类属性，如果被_init_或赋值，则生成新的实例属性
+    #当del 当前实例属性后，又调用初始化类属性
+    #类函数必须声明 self, 除非强制声明函数类型
+    #类静态方法与类方式  staticmethod(foo)、 classmethod(foo)
+
+
+class  classBYinstance():
+    
+    CL_attrBy=10
+    
+    def __init__(self):
+        
+        self.CL_attrBy=20
+
+    def  MethodA(baby=10):
+        
+        return  baby
+
+    def  MethodB(self,baby=10):
+
+        return baby
+
+    MethodA=staticmethod(MethodA) 
+
+
+class Singleton(object):
+      def __new__(cls): #cls 类本身
+          # 关键在于这，每一次实例化的时候，我们都只会返回这同一个instance对象
+          if not hasattr(cls, 'instance'):
+             cls.instance = super(Singleton, cls).__new__(cls)
+             
+          return cls.instance
+ 
+
+
+if __name__ == '__main__':
+    
+    obj1 = Singleton()
+    obj2 = Singleton()
+ 
+    print obj1 is obj2
+
+    objCL1=classBYinstance()
+
+    objCL1.CL_attrBy=30
+
+    classBYinstance.CL_attrBy=50
+
+    del  objCL1.CL_attrBy
+
+    #******************************************
+
+    print '类函数A' , objCL1.MethodA(20)
+
+    print '类实例函数B' , objCL1.MethodB(20)
+
+    print '类属性：' , classBYinstance.CL_attrBy
+    print '实例属性：' , objCL1.CL_attrBy
+
     
 
-
-def  foo(host,port,*argers):
-
-     #return  host, port, arg1 for eacharg in  argers
-    print 'host:', host
-    print 'port', port
-
-    print  'tuple:',[float(eacharg1) for  eacharg1  in  argers]
-
-
-def map(func, seq):
-    mapped_seq = []
-    for eachItem in seq:
-        mapped_seq.append(func(eachItem))
-    return mapped_seq
-
-#闭包
-def counter(start_at=0): 
-    count = [start_at] 
-    def incr(): 
-        count[0] += 1
-        return int(count[0])
-    return incr
-#foo('127',80,'123',456)
-
-if  __name__ == '__main__':
     
-    print   map((lambda arg: arg+1-10),[1,2,3,4,5,6,7])
-
-    count = counter(1)
-    print  count()
-
 
 
 
