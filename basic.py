@@ -75,6 +75,8 @@ from random import randint, choice
     #规范：标准库，第三方库，自定义库  PEP 8  python 风格
 
 #类
+
+
     #__init__()类似于类构造器，初始化调用一个实例
     #__dict__属性包含一个字典,dir(),  类函数 派生类->基类 '深度优先搜索'
     #__new__() 在_init_()之前，构造一个实例，主要用于不可变类str、int 、tuple 自定义这些类的实例化过程途径
@@ -83,7 +85,9 @@ from random import randint, choice
     #实例属性调用初始化类属性，如果被_init_或赋值，则生成新的实例属性
     #当del 当前实例属性后，又调用初始化类属性
     #类函数必须声明 self, 除非强制声明函数类型
-    #类静态方法与类方式  staticmethod(foo)、 classmethod(foo)
+    #类静态方法与类方式  staticmethod(foo)、 classmethod(foo)  建议使用  函数修饰符 @staticmethod  @classmethod
+
+
 
 
 class  classBYinstance():
